@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ランダムな数字生成</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #randomNumber {
+            font-size: 48px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>パスワード</h1>
+    <div id="randomNumber"></div>
+    <button onclick="openSecondTab()">パスワード入力</button>
+
+    <script>
+        function generateRandomNumber() {
+            let numbers = [];
+            while (numbers.length < 4) {
+                let number = Math.floor(Math.random() * 10);
+                if (!numbers.includes(number)) {
+                    numbers.push(number);
+                }
+            }
+            return numbers.join('');
+        }
+
+        function saveNumber(number) {
+            localStorage.setItem('savedNumber', number);
+        }
+
+        function openSecondTab() {
+            window.open('checknum.html', '_blank');
+        }
+
+        let randomNumber = generateRandomNumber();
+        document.getElementById('randomNumber').textContent = randomNumber;
+        saveNumber(randomNumber);
+    </script>
+</body>
+</html>

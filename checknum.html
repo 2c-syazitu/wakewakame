@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>数字確認</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        input {
+            font-size: 24px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 36px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>パスワードを入力してください</h1>
+    <input type="text" id="inputNumber" maxlength="4" placeholder="パスワード">
+    <button onclick="checkNumber()">確認</button>
+    <div id="result"></div>
+
+    <script>
+        function checkNumber() {
+            let inputNumber = document.getElementById('inputNumber').value;
+            let savedNumber = localStorage.getItem('savedNumber');
+            let resultElement = document.getElementById('result');
+
+            if (inputNumber === savedNumber) {
+                resultElement.textContent = "開錠";
+                resultElement.style.color = "green";
+            } else {
+                resultElement.textContent = "不一致";
+                resultElement.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
